@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>Country info lookup</h1>
+
+  <div class="form">
+    <label for="code">ISO code (2 or 3 letters)</label>
+    <input id="code"
+           type="text"
+           [ngModel]="code"
+           (ngModelChange)="code = $event.toUpperCase()"
+           maxlength="3"
+           placeholder="e.g. GB or USA"
+           style="text-transform: uppercase;" />
+
+    <button (click)="search()">Search</button>
+  </div>
+
+  <p class="error" *ngIf="error">{{ error }}</p>
+  <p *ngIf="loading">Loading...</p>
+
+  <div class="result" *ngIf="country">
+    <h2>{{ country.name }}</h2>
+    <p><strong>Region:</strong> {{ country.region?.value }}</p>
+    <p><strong>Capital:</strong> {{ country.capitalCity }}</p>
+    <p><strong>Latitude:</strong> {{ country.latitude }}</p>
+    <p><strong>Longitude:</strong> {{ country.longitude }}</p>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+.container {
+  max-width: 480px;
+  margin: 2rem auto;
+  font-family: system-ui, sans-serif;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+input {
+  padding: 0.4rem 0.6rem;
+}
+
+button {
+  width: fit-content;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+  margin-bottom: 1rem;
+}
+
+.result {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 4px;
+}
