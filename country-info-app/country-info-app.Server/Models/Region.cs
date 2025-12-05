@@ -6,5 +6,4 @@
         public string Iso2code { get; set; }
         public string Value { get; set; }
     }
-
 }
