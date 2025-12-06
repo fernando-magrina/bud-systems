@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-using country_info_app.server.models;
+using country_info_app.server.Models.Dtos;
 using country_info_app.server.validation;
 
 using Microsoft.AspNetCore.Mvc;
@@ -34,13 +34,13 @@ public class CountryController : ControllerBase
         {
             var url = $"v2/country/{isoCode}?format=json";
             var json = await _httpClient.GetStringAsync(url);
-            var data = new List<Country>();
-            var country = new Country();
+            var data = new List<CountryDto>();
+            var country = new CountryDto();
             var root = JsonDocument.Parse(json).RootElement;
 
             if (root.GetArrayLength() > 1)
             {
-                data = JsonConvert.DeserializeObject<List<Country>>(root[1].GetRawText());
+                data = JsonConvert.DeserializeObject<List<CountryDto>>(root[1].GetRawText());
                 country = data.FirstOrDefault();
             }
             else
@@ -48,7 +48,7 @@ public class CountryController : ControllerBase
                 throw new InvalidDataException("No data returned from World Bank API");
             }
 
-            var response = new Country
+            var response = new CountryDto
             {
                 Name = country.Name,
                 Region = country.Region,

@@ -1,14 +1,14 @@
-﻿namespace country_info_app.server.models
+﻿namespace country_info_app.server.Models.Dtos
 {
-    public class Country
+    public class CountryDto
     {
         public string Id { get; set; }
         public string Iso2Code { get; set; }
         public string Name { get; set; }
-        public Region Region { get; set; }
-        public Region AdminRegion { get; set; }
-        public Region IncomeLevel { get; set; }
-        public Region LendingType { get; set; }
+        public RegionDto Region { get; set; }
+        public RegionDto AdminRegion { get; set; }
+        public RegionDto IncomeLevel { get; set; }
+        public RegionDto LendingType { get; set; }
         public string CapitalCity { get; set; }
         public string Longitude { get; set; }
         public string Latitude { get; set; }
