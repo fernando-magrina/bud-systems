@@ -1,4 +1,4 @@
-﻿namespace country_info_app.Server.Validation
+﻿namespace country_info_app.server.Validation
 {
     public static class IsoCodeValidator
     {

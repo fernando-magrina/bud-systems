@@ -1,13 +1,13 @@
 ﻿using System.Text.Json;
 
-using country_info_app.Server.Models;
-using country_info_app.Server.Validation;
+using country_info_app.server.Models;
+using country_info_app.server.Validation;
 
 using Microsoft.AspNetCore.Mvc;
 
 using Newtonsoft.Json;
 
-namespace country_info_app.Server.Controllers;
+namespace country_info_app.server.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]

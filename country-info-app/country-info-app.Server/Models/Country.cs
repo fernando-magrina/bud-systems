@@ -1,4 +1,4 @@
-﻿namespace country_info_app.Server.Models
+﻿namespace country_info_app.server.Models
 {
     public class Country
     {
