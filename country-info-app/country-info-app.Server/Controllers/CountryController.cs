@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 
-using country_info_app.server.Models;
-using country_info_app.server.Validation;
+using country_info_app.server.models;
+using country_info_app.server.validation;
 
 using Microsoft.AspNetCore.Mvc;
 
