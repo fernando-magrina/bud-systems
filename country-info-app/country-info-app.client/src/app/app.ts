@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CountryResponse } from './models/country-response.model';
+import { environment } from './environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +23,7 @@ export class App {
     this.country = undefined;
 
     const trimmed = this.code.trim();
-    const api = 'http://localhost:5066';
+    const api = environment.apiUrl;
 
     if (!/^[A-Za-z]{2,3}$/.test(trimmed)) {
       this.error = 'ISO code must be 2 or 3 letters.';

@@ -7,6 +7,7 @@
            type="text"
            [ngModel]="code"
            (ngModelChange)="code = $event.toUpperCase()"
+           (keyup.enter)="search()" 
            maxlength="3"
            placeholder="e.g. GB or USA"
            style="text-transform: uppercase;" />
