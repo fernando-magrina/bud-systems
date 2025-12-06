@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 
+using country_info_app.server.Mapper.Interfaces;
 using country_info_app.server.Models.Dtos;
 using country_info_app.server.validation;
 
@@ -15,11 +16,13 @@ public class CountryController : ControllerBase
 {
     private readonly HttpClient _httpClient;
     private readonly ILogger<CountryController> _logger;
+    private readonly ICountryMapper _countryMapper;
 
-    public CountryController(IHttpClientFactory httpClientFactory, ILogger<CountryController> logger)
+    public CountryController(IHttpClientFactory httpClientFactory, ILogger<CountryController> logger, ICountryMapper countryMapper)
     {
         _httpClient = httpClientFactory.CreateClient("worldbank");
         _logger = logger;
+        _countryMapper = countryMapper;
     }
 
     [HttpGet("{isoCode}")]
@@ -48,14 +51,16 @@ public class CountryController : ControllerBase
                 throw new InvalidDataException("No data returned from World Bank API");
             }
 
-            var response = new CountryDto
-            {
-                Name = country.Name,
-                Region = country.Region,
-                CapitalCity = country.CapitalCity,
-                Longitude = country.Longitude,
-                Latitude = country.Latitude
-            };
+            var response = this._countryMapper.MapCountryDtoToResponseModel(country);
+
+            //var response = new CountryDto
+            //{
+            //    Name = country.Name,
+            //    Region = country.Region,
+            //    CapitalCity = country.CapitalCity,
+            //    Longitude = country.Longitude,
+            //    Latitude = country.Latitude
+            //};
 
             return Ok(response);
         }

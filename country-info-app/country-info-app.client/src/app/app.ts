@@ -1,22 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
-//TODO - move to models
-export interface Region {
-  id: string;
-  iso2code: string;
-  value: string;
-}
-
-export interface CountryResponse {
-  id: string;
-  iso2Code: string;
-  name: string;
-  region: Region;
-  capitalCity: string;
-  longitude: string;
-  latitude: string;
-}
+import { CountryResponse } from './models/country-response.model';
 
 @Component({
   selector: 'app-root',
@@ -26,9 +10,6 @@ export interface CountryResponse {
 })
 
 export class App {
-  ngOnInit() {
-      throw new Error('Method not implemented.');
-  }
   code = '';
   country?: CountryResponse;
   error = '';
