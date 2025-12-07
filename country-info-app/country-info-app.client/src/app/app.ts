@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { CountryService } from './services/country.service';
 import { CountryResponse } from './models/country-response.model';
-import { environment } from './environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -9,21 +8,20 @@ import { environment } from './environments/environment';
   styleUrls: ['./app.css'],
   standalone: false
 })
-
 export class App {
+
   code = '';
   country?: CountryResponse;
   error = '';
   loading = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(private countryService: CountryService) { }
 
   search() {
     this.error = '';
     this.country = undefined;
 
     const trimmed = this.code.trim();
-    const api = environment.apiUrl;
 
     if (!/^[A-Za-z]{2,3}$/.test(trimmed)) {
       this.error = 'ISO code must be 2 or 3 letters.';
@@ -32,7 +30,7 @@ export class App {
 
     this.loading = true;
 
-    this.http.get<CountryResponse>(`${api}/api/country/${trimmed}`).subscribe({
+    this.countryService.getCountry(trimmed).subscribe({
       next: result => {
         this.country = result;
         this.loading = false;
