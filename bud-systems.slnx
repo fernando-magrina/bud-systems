@@ -4,5 +4,5 @@
     <Build />
     <Deploy />
   </Project>
-  <Project Path="country-info-app/country-info-app.Server/country-info-app.server.csproj" Id="48896fb8-15a2-4118-8c50-d8fea6b1b1d5" />
+  <Project Path="country-info-app/country-info-app.server/country-info-app.server.csproj" Id="48896fb8-15a2-4118-8c50-d8fea6b1b1d5" />
 </Solution>

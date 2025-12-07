@@ -4,7 +4,7 @@
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>country_info_app.Server</RootNamespace>
+    <RootNamespace>country_info_app.server</RootNamespace>
     <SpaRoot>..\country-info-app.client</SpaRoot>
     <SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
     <SpaProxyServerUrl>https://localhost:49881</SpaProxyServerUrl>
