@@ -1,5 +1,5 @@
 <Solution>
-  <Project Path="country-info-app.tests/country-info-app.tests.csproj" Id="581772c8-b1a6-4f5c-89bf-bdbcf57f443c" />
+  <Project Path="country-info-app/country-info-app.tests/country-info-app.tests.csproj" Id="581772c8-b1a6-4f5c-89bf-bdbcf57f443c" />
   <Project Path="country-info-app/country-info-app.client/country-info-app.client.esproj">
     <Build />
     <Deploy />

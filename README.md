@@ -18,6 +18,12 @@ Node.js v22.12.0
 
 <img width="940" height="414" alt="image" src="https://github.com/user-attachments/assets/6c266d4b-121d-4493-92fb-02fbd237b133" />
 
+Just in case it doesn't load automatically, please right-click on the solution and set it up manually​
+
+<img width="601" height="1144" alt="image" src="https://github.com/user-attachments/assets/c66a2b93-39b2-44d8-b7b6-845234af6af2" />
+<img width="1519" height="826" alt="image" src="https://github.com/user-attachments/assets/0e7fa0fc-6c16-41e8-af8a-5b03d60cb875" />
+
+
  • The .spec files included in the Visual Studio Angular template were not working, so I replaced them with simple .test.ts files that run using npm test. This kept the client-side tests working without needing to fix the template.​ Please use the Developer PowerShell in Visual Studio to run those tests.
 
 <img width="940" height="425" alt="image" src="https://github.com/user-attachments/assets/5f052b24-6304-4f66-9de3-d3a5ff1fa8d1" />
