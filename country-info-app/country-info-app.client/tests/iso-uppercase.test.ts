@@ -1,17 +1,16 @@
 export { };
 
-function toIsoUpper(value: string): string {
-  return value.trim().toUpperCase();
+function expectUpper(cond: boolean, msg: string) {
+  if (!cond) throw new Error(msg);
 }
 
-function expectUpper(condition: boolean, message: string) {
-  if (!condition) throw new Error(message);
+function toIsoUpper(code: string): string {
+  return code.trim().toUpperCase();
 }
 
-expectUpper(toIsoUpper("br") === "BR", "lowercase should become uppercase");
-expectUpper(toIsoUpper("Br") === "BR", "mixed case should become uppercase");
-expectUpper(toIsoUpper(" us ") === "US", "spaces should be trimmed and uppercase");
-expectUpper(toIsoUpper("123") === "123", "numbers should remain unchanged");
-expectUpper(toIsoUpper("") === "", "empty string should return empty");
+expectUpper(toIsoUpper("br") === "BR", "Lowercase should uppercase");
+expectUpper(toIsoUpper(" Us ") === "US", "String should trim and uppercase");
+expectUpper(toIsoUpper("") === "", "Empty should stay empty");
+expectUpper(toIsoUpper("abc") === "ABC", "3-letter lowercase should uppercase");
 
 console.log("ISO uppercase tests --> PASS");

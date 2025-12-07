@@ -1,20 +1,17 @@
 export { };
 
+function expect(cond: boolean, msg: string) {
+  if (!cond) throw new Error(msg);
+}
+
 class CountryService {
   private http: any;
-
-  constructor(http: any) {
-    this.http = http;
-  }
+  constructor(http: any) { this.http = http; }
 
   getCountry(code: string) {
     const url = `http://localhost:5066/api/country/${code}`;
     return this.http.get(url);
   }
-}
-
-function expect(cond: boolean, msg: string) {
-  if (!cond) throw new Error(msg);
 }
 
 class MockHttp {
@@ -32,7 +29,7 @@ let result: any = null;
 service.getCountry("BR").subscribe(res => result = res);
 
 expect(result !== null, "Result should not be null");
-expect(result.test === true, "Result should include test=true");
-expect(result.url.endsWith("/api/country/BR"), "URL should end with /api/country/BR");
+expect(result.test === true, "Result should include { test: true }");
+expect(result.url.endsWith("/api/country/BR"), "URL must be correct");
 
 console.log("CountryService tests --> PASS");

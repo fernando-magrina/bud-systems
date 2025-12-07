@@ -1,20 +1,17 @@
 export { };
 
+function expect(cond: boolean, msg: string) {
+  if (!cond) throw new Error(msg);
+}
+
 class CountryService {
   private http: any;
-
-  constructor(http: any) {
-    this.http = http;
-  }
+  constructor(http: any) { this.http = http; }
 
   getCountry(code: string) {
     const url = `http://localhost:5066/api/country/${code}`;
     return this.http.get(url);
   }
-}
-
-function expect(cond: boolean, msg: string) {
-  if (!cond) throw new Error(msg);
 }
 
 class MockHttpError {
@@ -35,7 +32,7 @@ service.getCountry("BR").subscribe(
 );
 
 expect(errorResult !== null, "Error should be captured");
-expect(errorResult.message === "API error", "Error message should be 'API error'");
-expect(errorResult.url.endsWith("/api/country/BR"), "URL should match");
+expect(errorResult.message === "API error", "Error message must match");
+expect(errorResult.url.endsWith("/api/country/BR"), "URL must match");
 
 console.log("CountryService ERROR tests --> PASS");
