@@ -1,7 +1,8 @@
 <Solution>
+  <Project Path="country-info-app.tests/country-info-app.tests.csproj" Id="581772c8-b1a6-4f5c-89bf-bdbcf57f443c" />
   <Project Path="country-info-app/country-info-app.client/country-info-app.client.esproj">
     <Build />
     <Deploy />
   </Project>
-  <Project Path="country-info-app/country-info-app.server/country-info-app.server.csproj" Id="48896fb8-15a2-4118-8c50-d8fea6b1b1d5" DisplayName="country-info-app.server" />
+  <Project Path="country-info-app/country-info-app.server/country-info-app.server.csproj" Id="48896fb8-15a2-4118-8c50-d8fea6b1b1d5" />
 </Solution>

@@ -53,15 +53,6 @@ public class CountryController : ControllerBase
 
             var response = this._countryMapper.MapCountryDtoToResponseModel(country);
 
-            //var response = new CountryDto
-            //{
-            //    Name = country.Name,
-            //    Region = country.Region,
-            //    CapitalCity = country.CapitalCity,
-            //    Longitude = country.Longitude,
-            //    Latitude = country.Latitude
-            //};
-
             return Ok(response);
         }
 
