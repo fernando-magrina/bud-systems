@@ -364,3 +364,8 @@ FodyWeavers.xsd
 
 # VS user-specific launch settings
 *.slnLaunch.user
+
+dist/
+dist-tests/
+*.tsbuildinfo
+
