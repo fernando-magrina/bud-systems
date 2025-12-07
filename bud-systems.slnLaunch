@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "Startup Profile",
+    "Projects": [
+      {
+        "Path": "country-info-app\\country-info-app.client\\country-info-app.client.esproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "country-info-app\\country-info-app.server\\country-info-app.server.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
