@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\country-info-app\country-info-app.server\country-info-app.server.csproj" />
+    <ProjectReference Include="..\country-info-app.Server\country-info-app.server.csproj" />
   </ItemGroup>
 
   <ItemGroup>
