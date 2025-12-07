@@ -1,70 +1,26 @@
-﻿using System.Text.Json;
-
-using country_info_app.server.Mapper.Interfaces;
-using country_info_app.server.Models.Dtos;
-using country_info_app.server.validation;
-
-using Microsoft.AspNetCore.Mvc;
-
-using Newtonsoft.Json;
-
-namespace country_info_app.server.Controllers;
+﻿using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
 [Route("api/[controller]")]
 public class CountryController : ControllerBase
 {
-    private readonly HttpClient _httpClient;
-    private readonly ILogger<CountryController> _logger;
-    private readonly ICountryMapper _countryMapper;
+    private readonly ICountryService _countryService;
 
-    public CountryController(IHttpClientFactory httpClientFactory, ILogger<CountryController> logger, ICountryMapper countryMapper)
+    public CountryController(ICountryService countryService)
     {
-        _httpClient = httpClientFactory.CreateClient("worldbank");
-        _logger = logger;
-        _countryMapper = countryMapper;
+        _countryService = countryService;
     }
 
     [HttpGet("{isoCode}")]
     public async Task<IActionResult> Get(string isoCode)
     {
-        if (!IsoCodeValidator.IsValid(isoCode))
+        var result = await _countryService.GetCountryAsync(isoCode);
+
+        if (!result.Success)
         {
-            return BadRequest(new { error = "ISO code must be 2 or 3 letters." });
+            return StatusCode(result.StatusCode, new { error = result.Message });
         }
 
-        try
-        {
-            var url = $"v2/country/{isoCode}?format=json";
-            var json = await _httpClient.GetStringAsync(url);
-            var data = new List<CountryDto>();
-            var country = new CountryDto();
-            var root = JsonDocument.Parse(json).RootElement;
-
-            if (root.GetArrayLength() > 1)
-            {
-                data = JsonConvert.DeserializeObject<List<CountryDto>>(root[1].GetRawText());
-                country = data.FirstOrDefault();
-            }
-            else
-            {
-                throw new InvalidDataException("No data returned from World Bank API");
-            }
-
-            var response = this._countryMapper.MapCountryDtoToResponseModel(country);
-
-            return Ok(response);
-        }
-
-        catch (InvalidDataException ex)
-        {
-            _logger.LogError(ex, "HTTP request error calling World Bank API");
-            return StatusCode(404, new { error = $"{isoCode} is not a valid ISO code." });
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "Error calling World Bank API");
-            return StatusCode(500, new { error = "Internal server error." });
-        }
+        return Ok(result.Data);
     }
 }

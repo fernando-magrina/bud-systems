@@ -26,6 +26,8 @@ var mapper = mapperConfig.CreateMapper();
 builder.Services.AddSingleton(mapper);
 
 builder.Services.AddSingleton<ICountryMapper, CountryMapper>();
+builder.Services.AddTransient<ICountryApiService, CountryApiService>();
+builder.Services.AddTransient<ICountryService, CountryService>();
 
 var app = builder.Build();
 app.UseCors();
